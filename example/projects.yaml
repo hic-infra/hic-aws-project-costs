@@ -1,0 +1,62 @@
+proj-tag-names:
+  "project-001": "Project A"
+  "project-002": "Project B"
+  "project-003": "Project B"
+  "project-004": "SPECIAL-OPS"
+
+project-groups:
+  tre:
+    - "Project A"
+    - "Project B"
+    - "SPECIAL-OPS"
+    - "Internal - development"
+    - "Internal - training"
+  web:
+    - "SPECIAL-OPS"
+
+accounts:
+  - name: "aws-auth"
+    billing-type: shared
+    project-tagname: Proj
+    project-groups:
+      - tre
+      - web
+
+  - name: "aws-monitoring"
+    billing-type: shared
+    project-tagname: Proj
+    project-groups:
+      - tre
+      - web
+
+  - name: "aws-development"
+    billing-type: project-specific
+    project: "Internal - development"
+
+  - name: "aws-special-ops"
+    billing-type: project-specific
+    project: "SPECIAL-OPS"
+
+  - name: "aws-special-ops-dev"
+    billing-type: project-specific
+    project: "SPECIAL-OPS"
+
+  - name: "aws-training"
+    billing-type: project-specific
+    project: "Internal - training"
+
+  - name: "aws-production-1"
+    billing-type: shared
+    project-tagname: Proj
+    project-groups:
+      - tre
+
+  - name: "aws-production-2"
+    billing-type: shared
+    project-tagname: Proj
+    project-groups:
+      - tre
+
+  - name: "aws-complicated-project"
+    billing-type: project-specific
+    project: "Complicated Project Name / 🐣 / 🐧"

@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/hic-infra/TODO",
+  "title": "AWS project cost configuration",
+  "type": "object",
+  "properties": {
+    "proj-tag-names": {
+      "description": "A mapping of AWS project tags to the canonical project name",
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "project-groups": {
+      "description": "Groups of projects which use common infrastructure, a mapping of group-name to list of projects in the group",
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "accounts": {
+      "description": "The AWS accounts to be processed",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Name of the AWS account",
+            "type": "string"
+          },
+          "billing-type": {
+            "description": "Whether costs should be split across multiple projects or assigned to a single project",
+            "type": "string",
+            "enum": ["shared", "project-specific"]
+          },
+          "project-tagname": {
+            "description": "The AWS tag name used for identifying project resources, required for billing-type=shared",
+            "type": "string"
+          },
+          "project-groups": {
+            "description": "List of project-groups which share untagged costs, required for billing-type=shared",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "project": {
+            "description": "The project responsible for all costs, required for billing-type=project-specific",
+            "type": "string"
+          }
+        },
+        "required": ["name", "billing-type"],
+        "if": {
+          "properties": {
+            "billing-type": { "const": "shared" }
+          }
+        },
+        "then": {
+          "required": ["project-tagname", "project-groups"]
+        },
+        "else": {
+          "required": ["project"]
+        }
+      }
+    }
+  },
+  "required": ["proj-tag-names", "project-groups", "accounts"]
+}

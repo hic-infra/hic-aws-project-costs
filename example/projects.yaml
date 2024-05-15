@@ -53,7 +53,6 @@ accounts:
 
   - name: "aws-production-2"
     billing-type: shared
-    project-tagname: Proj
     project-groups:
       - tre
 

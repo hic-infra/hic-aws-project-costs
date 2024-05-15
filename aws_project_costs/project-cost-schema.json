@@ -37,7 +37,7 @@
             "enum": ["shared", "project-specific"]
           },
           "project-tagname": {
-            "description": "The AWS tag name used for identifying project resources, required for billing-type=shared",
+            "description": "The AWS tag name used for identifying project resources when billing-type=shared, optional",
             "type": "string"
           },
           "project-groups": {
@@ -60,7 +60,7 @@
           }
         },
         "then": {
-          "required": ["project-tagname", "project-groups"]
+          "required": ["project-groups"]
         },
         "else": {
           "required": ["project"]

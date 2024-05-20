@@ -1,0 +1,42 @@
+[project]
+authors = [
+  {name = "HIC Infrastructure", email = "hic-infra@dundee.ac.uk"},
+]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+  "jsonschema",
+  "pandas",
+  "pyyaml",
+]
+description = "Tools for allocating AWS infrastructure costs to projects"
+dynamic = ["version"]
+license = {file = "LICENSE.txt"}
+name = "hic-aws-project-costs"
+readme = "README.md"
+requires-python = ">= 3.10"
+
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.scripts]
+aws-project-costs = "aws_project_costs:main.main"
+
+[project.urls]
+Repository = "https://github.com/hic-infra/hic-aws-project-costs.git"
+Issues = "https://github.com/hic-infra/hic-aws-project-costs/issues"
+
+
+[build-system]
+requires = [
+  "setuptools>=64",
+  "setuptools_scm>=8",
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["aws_project_costs"]
+
+[tool.setuptools_scm]

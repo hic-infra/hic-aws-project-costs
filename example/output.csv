@@ -1,0 +1,32 @@
+projectname,account,tag,cost
+Internal - development,aws-auth [shared],Proj$,4.264684
+Internal - training,aws-auth [shared],Proj$,4.264684
+Project A,aws-auth [shared],Proj$,4.264684
+Project B,aws-auth [shared],Proj$,4.264684
+SPECIAL-OPS,aws-auth [shared],Proj$,4.264684
+Project A,aws-auth [shared],Proj$project-001,21.24323
+Project B,aws-auth [shared],Proj$project-002,0.1231
+Project B,aws-auth [shared],Proj$project-003,9.32
+SPECIAL-OPS,aws-auth [shared],Proj$project-004,9.3
+SPECIAL-OPS,aws-monitoring [shared],Proj$,444.66772
+Internal - development,aws-development [project-specific],Proj$,1002.1
+Internal - development,aws-development [project-specific],Proj$a,501.05
+Internal - development,aws-development [project-specific],Proj$b,250.5025
+SPECIAL-OPS,aws-special-ops [project-specific],Proj$,2324.22201
+SPECIAL-OPS,aws-special-ops-dev [project-specific],Proj$,101.1111
+SPECIAL-OPS,aws-special-ops-dev [project-specific],Proj$project-001,0.02
+Internal - training,aws-training [project-specific],Proj$project-001,45.2
+Internal - training,aws-training [project-specific],Proj$project-004,66.66
+Project A,aws-production-1 [shared],Proj$project-001,888.22
+Project B,aws-production-1 [shared],Proj$project-002,55.668
+Internal - development,aws-production-2 [shared],Proj$,5.1
+Internal - training,aws-production-2 [shared],Proj$,5.1
+Project A,aws-production-2 [shared],Proj$,5.1
+Project B,aws-production-2 [shared],Proj$,5.1
+SPECIAL-OPS,aws-production-2 [shared],Proj$,5.1
+Project B,aws-production-2 [shared],Proj$project-003,0.111
+SPECIAL-OPS,aws-production-2 [shared],Proj$project-004,545.3009
+Complicated Project Name / 🐣 / 🐧,aws-complicated-project [project-specific],Proj$,992.55
+Complicated Project Name / 🐣 / 🐧,aws-complicated-project [project-specific],Proj$chick,101.0001
+Complicated Project Name / 🐣 / 🐧,aws-complicated-project [project-specific],Proj$duck,213.44
+Complicated Project Name / 🐣 / 🐧,aws-complicated-project [project-specific],Proj$penguin,4321.10303

@@ -13,6 +13,9 @@ project-groups:
     - "Internal - training"
   web:
     - "SPECIAL-OPS"
+  # TODO: Should every project be in at least one group?
+  other:
+    - "Complicated Project Name / 🐣 / 🐧"
 
 accounts:
   - name: "aws-auth"
@@ -26,7 +29,6 @@ accounts:
     billing-type: shared
     project-tagname: Proj
     project-groups:
-      - tre
       - web
 
   - name: "aws-development"
@@ -53,6 +55,7 @@ accounts:
 
   - name: "aws-production-2"
     billing-type: shared
+    project-tagname: Proj
     project-groups:
       - tre
 

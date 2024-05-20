@@ -6,7 +6,7 @@ import jsonschema
 import yaml
 
 
-def validate(projects):
+def validate(projects, raise_on_error=False):
     with (Path(__file__).resolve().parent / "project-cost-schema.json").open() as f:
         schema = json.load(f)
 
@@ -15,12 +15,22 @@ def validate(projects):
     errors = []
 
     # Check accounts[].project-groups are valid
+    # Check accounts[].name are unique
+    acc_names = set()
     for acc in projects["accounts"]:
+        name = acc["name"].lower()
+        if name in acc_names:
+            errors.append(f"Multiple entries for account name={name}")
+        else:
+            acc_names.add(name)
         for group in acc.get("project-groups", []):
             if group not in projects["project-groups"].keys():
                 errors.append(
                     f"project-group {group} in account {acc['name']} does not exist!"
                 )
+
+    if raise_on_error and errors:
+        raise ValueError(errors)
     return errors
 
 

@@ -20,17 +20,30 @@ def _get_projects_in_groups(config, groupnames):
     return projects
 
 
-def _project_specific_account(description, project_name, costs_dict):
+def _project_specific_account(start, description, project_name, costs_dict):
     rows = []
 
     for item in costs_dict:
         costs_tag = item[f"{PROJECT_TAG}$"]
-        rows.append((project_name, description, costs_tag, item["COST"]))
+        rows.append(
+            (
+                start.date().isoformat(),
+                project_name,
+                description,
+                costs_tag,
+                item["COST"],
+            )
+        )
     return rows
 
 
 def _shared_account(
-    description, proj_tag_names_map, project_tagname, projects_in_group, costs_dict
+    start,
+    description,
+    proj_tag_names_map,
+    project_tagname,
+    projects_in_group,
+    costs_dict,
 ):
     rows = []
 
@@ -42,11 +55,27 @@ def _shared_account(
         project_tag = costs_tag[5:]
         if project_tagname and project_tag:
             project_name = proj_tag_names_map[project_tag]
-            rows.append((project_name, description, costs_tag, item["COST"]))
+            rows.append(
+                (
+                    start.date().isoformat(),
+                    project_name,
+                    description,
+                    costs_tag,
+                    item["COST"],
+                )
+            )
         else:
             cost_per_project = item["COST"] / len(projects_in_group)
             for project_name in projects_in_group:
-                rows.append((project_name, description, costs_tag, cost_per_project))
+                rows.append(
+                    (
+                        start.date().isoformat(),
+                        project_name,
+                        description,
+                        costs_tag,
+                        cost_per_project,
+                    )
+                )
     return rows
 
 
@@ -62,6 +91,7 @@ def allocate_costs(*, accountname, config, start, df):
     if billing_type == "project-specific":
         project_name = account_cfg["project"]
         rows = _project_specific_account(
+            start,
             description,
             project_name,
             costs_dict,
@@ -78,6 +108,7 @@ def allocate_costs(*, accountname, config, start, df):
             config, account_cfg["project-groups"]
         )
         rows = _shared_account(
+            start,
             description,
             config["proj-tag-names"],
             project_tagname,
@@ -88,7 +119,7 @@ def allocate_costs(*, accountname, config, start, df):
     else:
         raise ValueError(f"Invalid billing-type {billing_type}")
 
-    # [(project name, account, source, cost)]
+    # [(start, project name, account, source, cost)]
     return rows
 
 
@@ -120,7 +151,7 @@ def analyse_costs_csv(config, costs_csv_filename, output_csv_filename=None):
 
     if output_csv_filename:
         out = pd.DataFrame(
-            itemised_rows, columns=["projectname", "account", "tag", "cost"]
+            itemised_rows, columns=["start", "projectname", "account", "tag", "cost"]
         )
         out.to_csv(output_csv_filename, index=False)
     else:

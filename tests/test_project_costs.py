@@ -4,10 +4,17 @@ from pathlib import Path
 import yaml
 
 from aws_project_costs.project_costs import analyse_costs_csv
-
-# from aws_project_costs.schema import validate
+from aws_project_costs.schema import validate
 
 EXAMPLE_DIR = Path(__file__).parent / ".." / "example"
+
+
+def test_schema_validate():
+    config_yaml = EXAMPLE_DIR / "projects.yaml"
+    with (config_yaml).open() as f:
+        cfg = yaml.safe_load(f)
+    errors = validate(cfg, raise_on_error=False)
+    assert len(errors) == 0
 
 
 def test_analyse_costs_csv(tmp_path):

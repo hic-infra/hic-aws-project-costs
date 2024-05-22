@@ -41,6 +41,7 @@ def _shared_account(
     start,
     description,
     proj_tag_names_map,
+    shared_tag_values,
     project_tagname,
     projects_in_group,
     costs_dict,
@@ -53,7 +54,9 @@ def _shared_account(
             raise NotImplementedError(f"Project tag {costs_tag} not yet implemented")
 
         project_tag = costs_tag[5:]
-        if project_tagname and project_tag:
+        if project_tagname and project_tag and (project_tag not in shared_tag_values):
+            if project_tag not in proj_tag_names_map:
+                raise ValueError(f"{project_tag} is not in proj-tag-names")
             project_name = proj_tag_names_map[project_tag]
             rows.append(
                 (
@@ -65,6 +68,7 @@ def _shared_account(
                 )
             )
         else:
+            # Either untagged, or a tag that should be considered shared
             cost_per_project = item["COST"] / len(projects_in_group)
             for project_name in projects_in_group:
                 rows.append(
@@ -111,6 +115,7 @@ def allocate_costs(*, accountname, config, start, df):
             start,
             description,
             config["proj-tag-names"],
+            config["shared-tag-values"],
             project_tagname,
             projects_in_group,
             costs_dict,

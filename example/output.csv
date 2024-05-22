@@ -17,8 +17,13 @@ start,projectname,account,tag,cost
 2024-01-01,SPECIAL-OPS,aws-special-ops-dev [project-specific],Proj$project-001,0.02
 2024-01-01,Internal - training,aws-training [project-specific],Proj$project-001,45.2
 2024-01-01,Internal - training,aws-training [project-specific],Proj$project-004,66.66
+2024-01-01,Internal - development,aws-production-1 [shared],Proj$shared,1.0
+2024-01-01,Internal - training,aws-production-1 [shared],Proj$shared,1.0
 2024-01-01,Project A,aws-production-1 [shared],Proj$project-001,888.22
+2024-01-01,Project A,aws-production-1 [shared],Proj$shared,1.0
 2024-01-01,Project B,aws-production-1 [shared],Proj$project-002,55.668
+2024-01-01,Project B,aws-production-1 [shared],Proj$shared,1.0
+2024-01-01,SPECIAL-OPS,aws-production-1 [shared],Proj$shared,1.0
 2024-01-01,Internal - development,aws-production-2 [shared],Proj$,5.1
 2024-01-01,Internal - training,aws-production-2 [shared],Proj$,5.1
 2024-01-01,Project A,aws-production-2 [shared],Proj$,5.1

@@ -15,6 +15,7 @@ START,END,accountname,Proj$,COST
 2024-01-01,2024-02-01,aws-training,Proj$project-004,66.66
 2024-01-01,2024-02-01,aws-production-1,Proj$project-001,888.22
 2024-01-01,2024-02-01,aws-production-1,Proj$project-002,55.668
+2024-01-01,2024-02-01,aws-production-1,Proj$shared,5
 2024-01-01,2024-02-01,aws-production-2,Proj$,25.5
 2024-01-01,2024-02-01,aws-production-2,Proj$project-003,0.111
 2024-01-01,2024-02-01,aws-production-2,Proj$project-004,545.3009

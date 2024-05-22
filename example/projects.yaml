@@ -4,6 +4,9 @@ proj-tag-names:
   "project-003": "Project B"
   "project-004": "SPECIAL-OPS"
 
+shared-tag-values:
+  - "shared"
+
 project-groups:
   tre:
     - "Project A"

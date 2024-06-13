@@ -9,16 +9,23 @@ shared-tag-values:
 
 project-groups:
   tre:
-    - "Project A"
-    - "Project B"
-    - "SPECIAL-OPS"
-    - "Internal - development"
-    - "Internal - training"
+    - name: "Project A"
+      costshare: 1
+    - name: "Project B"
+      costshare: 1
+    - name: "SPECIAL-OPS"
+      costshare: 1
+    - name: "Internal - development"
+      costshare: 1
+    - name: "Internal - training"
+      costshare: 1
   web:
-    - "SPECIAL-OPS"
+    - name: "SPECIAL-OPS"
+      costshare: 1
   # TODO: Should every project be in at least one group?
   other:
-    - "Complicated Project Name / 🐣 / 🐧"
+    - name: "Complicated Project Name / 🐣 / 🐧"
+      costshare: 1
 
 accounts:
   - name: "aws-auth"

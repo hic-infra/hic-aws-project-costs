@@ -21,13 +21,25 @@
       }
     },
     "project-groups": {
-      "description": "Groups of projects which use common infrastructure, a mapping of group-name to list of projects in the group",
+      "description": "Groups of projects which use common infrastructure, a mapping of group-name to projects in the group, and their proportion of shared costs",
       "type": "object",
       "additionalProperties": {
         "type": "array",
         "items": {
-          "type": "string",
-          "minLength": 1
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "Name of the project",
+              "type": "string",
+              "minLength": 1
+            },
+            "costshare": {
+              "description": "Proportion of shared costs to be allocated to project, relative to other project shares",
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": ["name", "costshare"]
         }
       }
     },

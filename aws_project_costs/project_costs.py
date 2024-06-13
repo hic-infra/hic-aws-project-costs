@@ -13,10 +13,22 @@ def _get_account_cfg(config, accountname):
     raise ValueError(f"Configuration for account {accountname} not found")
 
 
-def _get_projects_in_groups(config, groupnames):
-    projects = set()
+def _get_project_costshares_in_groups(config, groupnames):
+    """
+    Get the combined set of all projects in groupnames, and their costshare
+    If a project is in multiple groups it must have the same costshare
+    """
+    projects = dict()
     for group in groupnames:
-        projects.update(config["project-groups"][group])
+        for p in config["project-groups"][group]:
+            name = p["name"]
+            costshare = p["costshare"]
+            if name in projects and costshare != projects[name]:
+                raise ValueError(
+                    f"Project {name} appears in multiple project groups"
+                    f"{groupnames} but has different costshares"
+                )
+            projects[name] = costshare
     return projects
 
 
@@ -69,7 +81,8 @@ def _shared_account(
             )
         else:
             # Either untagged, or a tag that should be considered shared
-            cost_per_project = item["COST"] / len(projects_in_group)
+            total_costshare = sum(projects_in_group.values())
+            cost_per_share = item["COST"] / total_costshare
             for project_name in projects_in_group:
                 rows.append(
                     (
@@ -77,7 +90,7 @@ def _shared_account(
                         project_name,
                         description,
                         costs_tag,
-                        cost_per_project,
+                        cost_per_share * projects_in_group[project_name],
                     )
                 )
     return rows
@@ -108,7 +121,7 @@ def allocate_costs(*, accountname, config, start, df):
                 f"Project tag {project_tagname} not yet implemented"
             )
 
-        projects_in_group = _get_projects_in_groups(
+        projects_in_group = _get_project_costshares_in_groups(
             config, account_cfg["project-groups"]
         )
         rows = _shared_account(

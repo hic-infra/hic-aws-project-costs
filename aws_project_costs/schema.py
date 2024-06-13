@@ -16,6 +16,7 @@ def validate(projects, raise_on_error=False):
 
     # Check accounts[].project-groups are valid
     # Check accounts[].name are unique
+    # Check at least one project in project-groups has a non-zero costshare
     acc_names = set()
     for acc in projects["accounts"]:
         name = acc["name"].lower()
@@ -28,6 +29,10 @@ def validate(projects, raise_on_error=False):
                 errors.append(
                     f"project-group {group} in account {acc['name']} does not exist!"
                 )
+
+    for group in acc.get("project-groups", []):
+        if set(p["costshare"] for p in group) == {0}:
+            errors.append(f"All projects in project-group {group} have costshare=0")
 
     if raise_on_error and errors:
         raise ValueError(errors)

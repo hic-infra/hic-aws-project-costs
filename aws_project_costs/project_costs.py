@@ -1,9 +1,15 @@
 import json
+from enum import Enum
 from operator import itemgetter
 
 import pandas as pd
 
 PROJECT_TAG = "Proj"
+
+
+class CostSourceType(Enum):
+    PROJECT_SPECIFIC = "project"
+    SHARED = "shared"
 
 
 def _get_account_cfg(config, accountname):
@@ -43,6 +49,7 @@ def _project_specific_account(start, description, project_name, costs_dict):
                 project_name,
                 description,
                 costs_tag,
+                CostSourceType.PROJECT_SPECIFIC.value,
                 item["COST"],
             )
         )
@@ -76,6 +83,7 @@ def _shared_account(
                     project_name,
                     description,
                     costs_tag,
+                    CostSourceType.PROJECT_SPECIFIC.value,
                     item["COST"],
                 )
             )
@@ -90,6 +98,7 @@ def _shared_account(
                         project_name,
                         description,
                         costs_tag,
+                        CostSourceType.SHARED.value,
                         cost_per_share * projects_in_group[project_name],
                     )
                 )
@@ -137,7 +146,7 @@ def allocate_costs(*, accountname, config, start, df):
     else:
         raise ValueError(f"Invalid billing-type {billing_type}")
 
-    # [(start, project name, account, source, cost)]
+    # [(start, project name, account, source, source type, cost)]
     return rows
 
 
@@ -169,7 +178,8 @@ def analyse_costs_csv(config, costs_csv_filename, output_csv_filename=None):
 
     if output_csv_filename:
         out = pd.DataFrame(
-            itemised_rows, columns=["start", "projectname", "account", "tag", "cost"]
+            itemised_rows,
+            columns=["start", "projectname", "account", "tag", "sourcetype", "cost"],
         )
         out.to_csv(output_csv_filename, index=False)
     else:

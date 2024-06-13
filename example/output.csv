@@ -1,40 +1,40 @@
-start,projectname,account,tag,cost
-2024-01-01,Internal - development,aws-auth [shared],Proj$,4.264684
-2024-01-01,Internal - training,aws-auth [shared],Proj$,4.264684
-2024-01-01,No shared costs,aws-auth [shared],Proj$,0.0
-2024-01-01,No shared costs,aws-auth [shared],Proj$project-noshared,0.33
-2024-01-01,Project A,aws-auth [shared],Proj$,4.264684
-2024-01-01,Project A,aws-auth [shared],Proj$project-001,21.24323
-2024-01-01,Project B,aws-auth [shared],Proj$,4.264684
-2024-01-01,Project B,aws-auth [shared],Proj$project-002,0.1231
-2024-01-01,Project B,aws-auth [shared],Proj$project-003,9.32
-2024-01-01,SPECIAL-OPS,aws-auth [shared],Proj$,4.264684
-2024-01-01,SPECIAL-OPS,aws-auth [shared],Proj$project-004,9.3
-2024-01-01,No shared costs,aws-monitoring [shared],Proj$,0.0
-2024-01-01,SPECIAL-OPS,aws-monitoring [shared],Proj$,444.66772
-2024-01-01,Internal - development,aws-development [project-specific],Proj$,1002.1
-2024-01-01,Internal - development,aws-development [project-specific],Proj$a,501.05
-2024-01-01,Internal - development,aws-development [project-specific],Proj$b,250.5025
-2024-01-01,SPECIAL-OPS,aws-special-ops [project-specific],Proj$,2324.22201
-2024-01-01,SPECIAL-OPS,aws-special-ops-dev [project-specific],Proj$,101.1111
-2024-01-01,SPECIAL-OPS,aws-special-ops-dev [project-specific],Proj$project-001,0.02
-2024-01-01,Internal - training,aws-training [project-specific],Proj$project-001,45.2
-2024-01-01,Internal - training,aws-training [project-specific],Proj$project-004,66.66
-2024-01-01,Internal - development,aws-production-1 [shared],Proj$shared,1.0
-2024-01-01,Internal - training,aws-production-1 [shared],Proj$shared,1.0
-2024-01-01,Project A,aws-production-1 [shared],Proj$project-001,888.22
-2024-01-01,Project A,aws-production-1 [shared],Proj$shared,1.0
-2024-01-01,Project B,aws-production-1 [shared],Proj$project-002,55.668
-2024-01-01,Project B,aws-production-1 [shared],Proj$shared,1.0
-2024-01-01,SPECIAL-OPS,aws-production-1 [shared],Proj$shared,1.0
-2024-01-01,Internal - development,aws-production-2 [shared],Proj$,5.1
-2024-01-01,Internal - training,aws-production-2 [shared],Proj$,5.1
-2024-01-01,Project A,aws-production-2 [shared],Proj$,5.1
-2024-01-01,Project B,aws-production-2 [shared],Proj$,5.1
-2024-01-01,Project B,aws-production-2 [shared],Proj$project-003,0.111
-2024-01-01,SPECIAL-OPS,aws-production-2 [shared],Proj$,5.1
-2024-01-01,SPECIAL-OPS,aws-production-2 [shared],Proj$project-004,545.3009
-2024-01-01,Complicated Project Name / 🐣 / 🐧,aws-complicated-project [project-specific],Proj$,992.55
-2024-01-01,Complicated Project Name / 🐣 / 🐧,aws-complicated-project [project-specific],Proj$chick,101.0001
-2024-01-01,Complicated Project Name / 🐣 / 🐧,aws-complicated-project [project-specific],Proj$duck,213.44
-2024-01-01,Complicated Project Name / 🐣 / 🐧,aws-complicated-project [project-specific],Proj$penguin,4321.10303
+start,projectname,account,tag,sourcetype,cost
+2024-01-01,Internal - development,aws-auth [shared],Proj$,shared,4.264684
+2024-01-01,Internal - training,aws-auth [shared],Proj$,shared,4.264684
+2024-01-01,No shared costs,aws-auth [shared],Proj$,shared,0.0
+2024-01-01,No shared costs,aws-auth [shared],Proj$project-noshared,project,0.33
+2024-01-01,Project A,aws-auth [shared],Proj$,shared,4.264684
+2024-01-01,Project A,aws-auth [shared],Proj$project-001,project,21.24323
+2024-01-01,Project B,aws-auth [shared],Proj$,shared,4.264684
+2024-01-01,Project B,aws-auth [shared],Proj$project-002,project,0.1231
+2024-01-01,Project B,aws-auth [shared],Proj$project-003,project,9.32
+2024-01-01,SPECIAL-OPS,aws-auth [shared],Proj$,shared,4.264684
+2024-01-01,SPECIAL-OPS,aws-auth [shared],Proj$project-004,project,9.3
+2024-01-01,No shared costs,aws-monitoring [shared],Proj$,shared,0.0
+2024-01-01,SPECIAL-OPS,aws-monitoring [shared],Proj$,shared,444.66772
+2024-01-01,Internal - development,aws-development [project-specific],Proj$,project,1002.1
+2024-01-01,Internal - development,aws-development [project-specific],Proj$a,project,501.05
+2024-01-01,Internal - development,aws-development [project-specific],Proj$b,project,250.5025
+2024-01-01,SPECIAL-OPS,aws-special-ops [project-specific],Proj$,project,2324.22201
+2024-01-01,SPECIAL-OPS,aws-special-ops-dev [project-specific],Proj$,project,101.1111
+2024-01-01,SPECIAL-OPS,aws-special-ops-dev [project-specific],Proj$project-001,project,0.02
+2024-01-01,Internal - training,aws-training [project-specific],Proj$project-001,project,45.2
+2024-01-01,Internal - training,aws-training [project-specific],Proj$project-004,project,66.66
+2024-01-01,Internal - development,aws-production-1 [shared],Proj$shared,shared,1.0
+2024-01-01,Internal - training,aws-production-1 [shared],Proj$shared,shared,1.0
+2024-01-01,Project A,aws-production-1 [shared],Proj$project-001,project,888.22
+2024-01-01,Project A,aws-production-1 [shared],Proj$shared,shared,1.0
+2024-01-01,Project B,aws-production-1 [shared],Proj$project-002,project,55.668
+2024-01-01,Project B,aws-production-1 [shared],Proj$shared,shared,1.0
+2024-01-01,SPECIAL-OPS,aws-production-1 [shared],Proj$shared,shared,1.0
+2024-01-01,Internal - development,aws-production-2 [shared],Proj$,shared,5.1
+2024-01-01,Internal - training,aws-production-2 [shared],Proj$,shared,5.1
+2024-01-01,Project A,aws-production-2 [shared],Proj$,shared,5.1
+2024-01-01,Project B,aws-production-2 [shared],Proj$,shared,5.1
+2024-01-01,Project B,aws-production-2 [shared],Proj$project-003,project,0.111
+2024-01-01,SPECIAL-OPS,aws-production-2 [shared],Proj$,shared,5.1
+2024-01-01,SPECIAL-OPS,aws-production-2 [shared],Proj$project-004,project,545.3009
+2024-01-01,Complicated Project Name / 🐣 / 🐧,aws-complicated-project [project-specific],Proj$,project,992.55
+2024-01-01,Complicated Project Name / 🐣 / 🐧,aws-complicated-project [project-specific],Proj$chick,project,101.0001
+2024-01-01,Complicated Project Name / 🐣 / 🐧,aws-complicated-project [project-specific],Proj$duck,project,213.44
+2024-01-01,Complicated Project Name / 🐣 / 🐧,aws-complicated-project [project-specific],Proj$penguin,project,4321.10303

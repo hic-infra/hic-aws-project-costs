@@ -4,6 +4,7 @@ START,END,accountname,Proj$,COST
 2024-01-01,2024-02-01,aws-auth,Proj$project-002,0.1231
 2024-01-01,2024-02-01,aws-auth,Proj$project-003,9.32
 2024-01-01,2024-02-01,aws-auth,Proj$project-004,9.30
+2024-01-01,2024-02-01,aws-auth,Proj$project-noshared,0.33
 2024-01-01,2024-02-01,aws-monitoring,Proj$,444.66772
 2024-01-01,2024-02-01,aws-development,Proj$,1002.1
 2024-01-01,2024-02-01,aws-development,Proj$a,501.05

@@ -3,6 +3,7 @@ proj-tag-names:
   "project-002": "Project B"
   "project-003": "Project B"
   "project-004": "SPECIAL-OPS"
+  "project-noshared": "No shared costs"
 
 shared-tag-values:
   - "shared"
@@ -22,6 +23,8 @@ project-groups:
   web:
     - name: "SPECIAL-OPS"
       costshare: 1
+    - name: "No shared costs"
+      costshare: 0
   # TODO: Should every project be in at least one group?
   other:
     - name: "Complicated Project Name / 🐣 / 🐧"

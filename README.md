@@ -1,8 +1,8 @@
 # Experiment: HIC AWS Project Costs
 
-Experimental repo for processing AWS project costs by tag, taking into account shared AWS accounts.
+Experimental public repo for processing AWS project costs by tag, taking into account shared AWS accounts.
 
-This may be added to https://github.com/hic-infra/hic-aws-costing-tools if it works, unless it's excessively complicated in which case this repo will be made public.
+If this works it may be added to https://github.com/hic-infra/hic-aws-costing-tools and this repo deleted, unless it's excessively complicated in which case this repo will be kept.
 
 ## Installation
 
@@ -24,6 +24,3 @@ aws-costs --start YYY1-M1-D1 --end YYY2-M2-D2 --granularity monthly --output fla
 
 Currently this tool assumes Projects within a single account are distinguished by the `Proj` cost allocation tag.
 In future it will be possible to change this tag for individual AWS accounts.
-
-Currently all dates in the cost CSV are ignored
-TODO: Output `START` in output

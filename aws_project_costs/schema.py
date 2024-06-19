@@ -31,7 +31,7 @@ def validate(projects, raise_on_error=False):
                 )
 
     for group in acc.get("project-groups", []):
-        if set(p["costshare"] for p in group) == {0}:
+        if set(p["costshare"] for p in projects["project-groups"][group]) == {0}:
             errors.append(f"All projects in project-group {group} have costshare=0")
 
     if raise_on_error and errors:

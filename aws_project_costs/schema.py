@@ -1,12 +1,13 @@
 import json
 import sys
 from pathlib import Path
+from typing import Any
 
 import jsonschema
 import yaml
 
 
-def validate(projects, raise_on_error=False):
+def validate(projects: dict[str, Any], raise_on_error: bool = False) -> list[str]:
     with (Path(__file__).resolve().parent / "project-cost-schema.json").open() as f:
         schema = json.load(f)
 

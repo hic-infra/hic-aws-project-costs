@@ -42,4 +42,18 @@ repos:
       - id: bandit
         entry: bandit
         exclude: ^tests/
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.10.0
+    hooks:
+      - id: mypy
+        # TODO: Get rid of Any types. mypy doesn't take jsonschema.validate
+        # into account
+        # args:
+        #   - --strict
+        additional_dependencies:
+          - pandas-stubs
+          - types-jsonschema
+          - types-PyYAML
+        files: ^aws_project_costs
+
 exclude: "^tests/dummy-.*/.*.md$"

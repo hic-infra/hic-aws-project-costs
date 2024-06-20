@@ -6,7 +6,7 @@ from .project_costs import analyse_costs_csv
 from .schema import validate
 
 
-def main():
+def main() -> None:
     parser = ArgumentParser("aws-project-costs")
     parser.add_argument(
         "--config", required=True, help="Project costs configuration file"

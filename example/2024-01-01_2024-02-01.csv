@@ -1,4 +1,4 @@
-START,END,accountname,Proj$,COST
+START,END,ACCOUNTNAME,Proj$,COST
 2024-01-01,2024-02-01,aws-auth,Proj$,21.32342
 2024-01-01,2024-02-01,aws-auth,Proj$project-001,21.24323
 2024-01-01,2024-02-01,aws-auth,Proj$project-002,0.1231

@@ -118,7 +118,7 @@ def allocate_costs(
 ) -> list[tuple[str, str, str, Any, str, Any]]:
     account_cfg = _get_account_cfg(config, accountname)
 
-    costs = df[(df["START"] == start) & (df["accountname"] == accountname)]
+    costs = df[(df["START"] == start) & (df["ACCOUNTNAME"] == accountname)]
     billing_type = account_cfg["billing-type"]
 
     costs_dict = costs.to_dict(orient="records")
@@ -167,7 +167,7 @@ def analyse_costs_csv(
 ) -> None:
     df = pd.read_csv(
         costs_csv_filename,
-        dtype={"accountname": str, f"{PROJECT_TAG}$": str, "COST": float},
+        dtype={"ACCOUNTNAME": str, f"{PROJECT_TAG}$": str, "COST": float},
         parse_dates=["START", "END"],
         date_format="ISO8601",
     )
@@ -176,7 +176,7 @@ def analyse_costs_csv(
 
     for start in sorted(df["START"].unique()):
         month_costs = df[df["START"] == start]
-        for accountname in month_costs["accountname"].unique():
+        for accountname in month_costs["ACCOUNTNAME"].unique():
             # print(f"Processing {accountname} {start}")
             try:
                 acc_itemised_rows = allocate_costs(

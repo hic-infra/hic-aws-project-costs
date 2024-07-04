@@ -82,9 +82,12 @@ def _shared_account(
 
         project_tag = costs_tag[5:]
         if project_tagname and project_tag and (project_tag not in shared_tag_values):
-            if project_tag not in proj_tag_names_map:
+            if project_tag in proj_tag_names_map:
+                project_name = proj_tag_names_map[project_tag]
+            elif "*" in proj_tag_names_map:
+                project_name = proj_tag_names_map["*"]
+            else:
                 raise ValueError(f"{project_tag} is not in proj-tag-names")
-            project_name = proj_tag_names_map[project_tag]
             rows.append(
                 (
                     start.date().isoformat(),

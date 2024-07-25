@@ -1,9 +1,12 @@
 import json
+import logging
 from enum import Enum
 from operator import itemgetter
 from typing import Any, Hashable, Optional
 
 import pandas as pd
+
+logger = logging.getLogger(__name__)
 
 PROJECT_TAG = "Proj"
 
@@ -82,9 +85,15 @@ def _shared_account(
 
         project_tag = costs_tag[5:]
         if project_tagname and project_tag and (project_tag not in shared_tag_values):
-            if project_tag not in proj_tag_names_map:
+            if project_tag in proj_tag_names_map:
+                project_name = proj_tag_names_map[project_tag]
+            elif "*" in proj_tag_names_map:
+                project_name = proj_tag_names_map["*"]
+                logger.warn(
+                    "Project tag %s not found, using %s", project_tag, project_name
+                )
+            else:
                 raise ValueError(f"{project_tag} is not in proj-tag-names")
-            project_name = proj_tag_names_map[project_tag]
             rows.append(
                 (
                     start.date().isoformat(),
@@ -177,7 +186,7 @@ def analyse_costs_csv(
     for start in sorted(df["START"].unique()):
         month_costs = df[df["START"] == start]
         for accountname in month_costs["ACCOUNTNAME"].unique():
-            # print(f"Processing {accountname} {start}")
+            logger.debug(f"Processing {accountname} {start}")
             try:
                 acc_itemised_rows = allocate_costs(
                     accountname=accountname,
@@ -187,7 +196,9 @@ def analyse_costs_csv(
                 )
                 itemised_rows.extend(sorted(acc_itemised_rows, key=itemgetter(1, 2, 0)))
             except Exception as e:
-                print(f"ERROR: Failed to analyse account {accountname} {start} {e}")
+                logger.error(
+                    f"ERROR: Failed to analyse account {accountname} {start} {e}"
+                )
                 raise
 
     if output_csv_filename:

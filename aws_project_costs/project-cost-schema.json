@@ -5,7 +5,7 @@
   "type": "object",
   "properties": {
     "proj-tag-names": {
-      "description": "A mapping of AWS project tags to the canonical project name",
+      "description": "A mapping of AWS project tags to the canonical project name. Optionally use '*' to map unknown tags to a defined project name",
       "type": "object",
       "additionalProperties": {
         "type": "string",

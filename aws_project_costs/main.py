@@ -1,3 +1,4 @@
+import logging
 from argparse import ArgumentParser
 
 import yaml
@@ -13,8 +14,11 @@ def main() -> None:
     )
     parser.add_argument("--costs", required=True, help="Project costs CSV")
     parser.add_argument("--output", help="Output file")
+    parser.add_argument("--verbose", "-v", action="store_true", help="Verbose output")
 
     args = parser.parse_args()
+
+    logging.basicConfig(level=logging.DEBUG if args.verbose else logging.INFO)
 
     with open(args.config) as f:
         config = yaml.safe_load(f)
